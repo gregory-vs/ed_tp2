@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/ed_tp2.dir/src/main.cpp.o -o ed_tp2 
