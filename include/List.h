@@ -6,7 +6,7 @@ class List {
 public:
     int data;
     List* next;
-    void push(List** list, int data);
+    void push(List list, int data);
 
 };
 #endif //ED_TP2_LIST_H

@@ -1,25 +1,25 @@
 #include <iostream>
 #include "List.h"
 
-void List::push(List** list, int d)
+void List::push(List list, int d)
 {
     List* newList = new List();
 
-    List* last = *list;
+    List last = list;
 
     newList->data = d;
     newList->next = nullptr;
 
-    if(*list == nullptr)
+    if(list.next == nullptr)
     {
-        *list = newList;
+        list = *newList;
         return;
     }
 
-    while(last->next != nullptr)
-        last = last->next;
+    while(last.next != nullptr)
+        last = *last.next;
 
-    last->next = newList;
+    last.next = newList;
     return;
 }
 
