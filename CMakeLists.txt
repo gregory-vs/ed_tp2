@@ -9,7 +9,5 @@ add_executable(ed_tp2
         src/main.cpp
         include/Sorting.h
         src/Sorting.cpp
-        include/List.h
-        src/List.cpp
         include/graph.h
         src/graph.cpp)

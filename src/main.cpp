@@ -12,9 +12,8 @@ int main(int argc,char *argv[])
     int counterNeighbour;
     int posVertix = 0;
     int counterArr = 0;
-    int qtEdges = (vertixInt*(vertixInt-1))/2;
 
-    Edge *edges = new Edge[qtEdges];
+    Graph g(vertixInt);
 
     while(counter < vertixInt)
     {
@@ -24,8 +23,7 @@ int main(int argc,char *argv[])
         while(counterNeighbour < stoi(qtNeighbour))
         {
             cin >> nextNeighbour;
-            edges[counterArr].src = posVertix;
-            edges[counterArr].dest = stoi(nextNeighbour);
+            g.addEdge(posVertix, stoi(nextNeighbour));
             ++counterNeighbour;
             ++counterArr;
         }
@@ -34,38 +32,7 @@ int main(int argc,char *argv[])
         ++counter;
     }
 
-    int j = 0;
-    int k = 0;
-    while(j < qtEdges)
-    {
-        if(edges[j].src == edges[j].dest)
-        {
-            ++k;
-        }
-        ++j;
-    }
-
-    int correctedQtEdges = qtEdges - k;
-
-    Graph graph(edges, correctedQtEdges, vertixInt);
-
-    int arrayColors[vertixInt];
-
-    for(int i = 0; i < vertixInt; ++i)
-    {
-        cin >> arrayColors[i];
-    }
-
-    for (int i = 0; i < vertixInt; i++)
-    {
-        graph.head[i]->color = arrayColors[i];
-    }
-
-    for (int i = 0; i < vertixInt; i++)
-    {
-        // print given vertex
-        cout << "vertice: " << i << " cor: " << graph.head[i]->color << endl;
-    }
+    g.showGraph();
 
     return 0;
 }

@@ -3,57 +3,35 @@
 
 using namespace std;
 
-GraphNode* Graph::getAdjListNode(int dest, GraphNode* head)
+Graph::Graph(int numV)
 {
-    auto* newNode = new GraphNode;
-    newNode->val = dest;
-
-    // point new node to the current head
-    newNode->next = head;
-
-    return newNode;
+    N = numV;
+    adjList = new listnode*[N];
+    for (int i = 0; i < N; i++)
+        adjList[i] = nullptr;
+}
+void Graph::addEdge(int from, int to)
+{
+    adjList[from] = new listnode(to, adjList[from]);
 }
 
-Graph::Graph(Edge edges[], int n, int N)
+void Graph::showGraph()
 {
-    // allocate memory
-    head = new GraphNode*[N]();
-    this->N = N;
-
-    // initialize head pointer for all vertices
-    for (int i = 0; i < N; i++) {
-        head[i] = nullptr;
-    }
-
-    // add edges to the directed graph
-    for (unsigned i = 0; i < n; i++)
+    for (int i = 0; i < N; i++)
     {
-        int src = edges[i].src;
-        int dest = edges[i].dest;
-
-        // insert at the beginning
-        GraphNode* newNode = getAdjListNode(dest, head[src]);
-
-        // point head pointer to the new node
-        head[src] = newNode;
-
+        if (adjList[i] != nullptr)
+        {
+            cout<<i<<": ";
+            for (listnode* itr = adjList[i]; itr != nullptr; itr = itr->next)
+            {
+                cout<<itr->label<<" ";
+            }
+            cout<<endl;
+        }
     }
 }
 
-Graph::~Graph() {
-    for (int i = 0; i < N; i++) {
-        delete[] head[i];
-    }
-
-    delete[] head;
-}
-
-void Graph::printColor(GraphNode* ptr)
+void Graph::colourVertix(int vertix, int colour)
 {
-    while (ptr != nullptr)
-    {
-        cout << " —> " << ptr->color;
-        ptr = ptr->next;
-    }
-    cout << endl;
+
 }
