@@ -48,11 +48,12 @@ Graph::~Graph() {
     delete[] head;
 }
 
-void Graph::colorTheGraph(GraphNode* ptr, int color)
+void Graph::printColor(GraphNode* ptr)
 {
     while (ptr != nullptr)
     {
-        ptr->val = color;
+        cout << " —> " << ptr->color;
         ptr = ptr->next;
     }
+    cout << endl;
 }

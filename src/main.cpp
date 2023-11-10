@@ -58,13 +58,13 @@ int main(int argc,char *argv[])
 
     for (int i = 0; i < vertixInt; i++)
     {
-        Graph::colorTheGraph(graph.head[i], arrayColors[i]);
+        graph.head[i]->color = arrayColors[i];
     }
 
-
-    for (int i = 0; i < vertixInt; ++i)
+    for (int i = 0; i < vertixInt; i++)
     {
-        cout << "cor do vertice: " graph.head[i];
+        // print given vertex
+        cout << "vertice: " << i << " cor: " << graph.head[i]->color << endl;
     }
 
     return 0;

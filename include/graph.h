@@ -28,6 +28,8 @@ public:
     ~Graph();
     // Function to print all neighboring vertices of a given vertex
     static void colorTheGraph(GraphNode* ptr, int color);
+    static void printColor(GraphNode* ptr);
+
 };
 
 #endif //ED_TP2_GRAPH_H
