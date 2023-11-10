@@ -1,19 +1,59 @@
 #include <iostream>
 #include "graph.h"
 
-Graph::Graph(int v)
+using namespace std;
+
+GraphNode* Graph::getAdjListNode(int dest, GraphNode* head)
 {
-    this->vertix = v;
-    list = new List[v];
+    auto* newNode = new GraphNode;
+    newNode->val = dest;
+
+    // point new node to the current head
+    newNode->next = head;
+
+    return newNode;
 }
 
-Graph::~Graph()
+Graph::Graph(Edge edges[], int n, int N)
 {
+    // allocate memory
+    head = new GraphNode*[N]();
+    this->N = N;
 
+    // initialize head pointer for all vertices
+    for (int i = 0; i < N; i++) {
+        head[i] = nullptr;
+    }
+
+    // add edges to the directed graph
+    for (unsigned i = 0; i < n; i++)
+    {
+        int src = edges[i].src;
+        int dest = edges[i].dest;
+
+        // insert at the beginning
+        GraphNode* newNode = getAdjListNode(dest, head[src]);
+
+        // point head pointer to the new node
+        head[src] = newNode;
+
+    }
 }
 
-void Graph::addEdge(int v, int nextVertix)
+Graph::~Graph() {
+    for (int i = 0; i < N; i++) {
+        delete[] head[i];
+    }
+
+    delete[] head;
+}
+
+void Graph::printList(GraphNode* ptr)
 {
-    list[v].push(list[v],nextVertix);
-    list[nextVertix].push(list[nextVertix], v);
+    while (ptr != nullptr)
+    {
+        cout << " —> " << ptr->val;
+        ptr = ptr->next;
+    }
+    cout << endl;
 }

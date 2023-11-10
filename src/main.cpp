@@ -7,14 +7,15 @@ using namespace std;
 
 int main(int argc,char *argv[])
 {
-    string sort, vertix = "5", qtNeighbour, nextNeighbour;
+    string sort, vertix = "6", qtNeighbour, nextNeighbour;
     int vertixInt = stoi(vertix);
-    int counter = 1;
+    int counter = 0;
     int counterNeighbour;
     int posVertix = 0;
+    int counterArr = 0;
+    int qtEdges = (vertixInt*(vertixInt-1))/2;
 
-    Graph g(vertixInt);
-
+    Edge *edges = new Edge[qtEdges];
 
     while(counter < vertixInt)
     {
@@ -24,13 +25,15 @@ int main(int argc,char *argv[])
         while(counterNeighbour < stoi(qtNeighbour))
         {
             cin >> nextNeighbour;
-            g.addEdge(posVertix, stoi(nextNeighbour));
+            edges[counterArr].src = posVertix;
+            edges[counterArr].dest = stoi(nextNeighbour);
             ++counterNeighbour;
+            ++counterArr;
         }
 
         ++posVertix;
         ++counter;
     }
-
+    
     return 0;
 }
