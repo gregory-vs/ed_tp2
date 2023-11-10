@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include "List.h"
 #include "graph.h"
 
 using namespace std;
@@ -50,13 +49,22 @@ int main(int argc,char *argv[])
 
     Graph graph(edges, correctedQtEdges, vertixInt);
 
+    int arrayColors[vertixInt];
+
+    for(int i = 0; i < vertixInt; ++i)
+    {
+        cin >> arrayColors[i];
+    }
+
     for (int i = 0; i < vertixInt; i++)
     {
-        // print given vertex
-        cout << i;
+        Graph::colorTheGraph(graph.head[i], arrayColors[i]);
+    }
 
-        // print all its neighboring vertices
-        Graph::printList(graph.head[i]);
+
+    for (int i = 0; i < vertixInt; ++i)
+    {
+        cout << "cor do vertice: " graph.head[i];
     }
 
     return 0;

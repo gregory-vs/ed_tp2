@@ -5,6 +5,7 @@
 struct GraphNode
 {
     int val;
+    int color;
     GraphNode* next;
 };
 
@@ -26,7 +27,7 @@ public:
     // Destructor
     ~Graph();
     // Function to print all neighboring vertices of a given vertex
-    static void printList(GraphNode* ptr);
+    static void colorTheGraph(GraphNode* ptr, int color);
 };
 
 #endif //ED_TP2_GRAPH_H
