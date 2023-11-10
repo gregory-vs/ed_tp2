@@ -34,6 +34,30 @@ int main(int argc,char *argv[])
         ++posVertix;
         ++counter;
     }
-    
+
+    int j = 0;
+    int k = 0;
+    while(j < qtEdges)
+    {
+        if(edges[j].src == edges[j].dest)
+        {
+            ++k;
+        }
+        ++j;
+    }
+
+    int correctedQtEdges = qtEdges - k;
+
+    Graph graph(edges, correctedQtEdges, vertixInt);
+
+    for (int i = 0; i < vertixInt; i++)
+    {
+        // print given vertex
+        cout << i;
+
+        // print all its neighboring vertices
+        Graph::printList(graph.head[i]);
+    }
+
     return 0;
 }

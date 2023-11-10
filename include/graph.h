@@ -26,7 +26,7 @@ public:
     // Destructor
     ~Graph();
     // Function to print all neighboring vertices of a given vertex
-    void printList(GraphNode* ptr);
+    static void printList(GraphNode* ptr);
 };
 
 #endif //ED_TP2_GRAPH_H
