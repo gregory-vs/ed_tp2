@@ -31,7 +31,38 @@ void Graph::showGraph()
     }
 }
 
-void Graph::colourVertix(int vertix, int colour)
+void Graph::greedyColoring(int colors[])
 {
+    bool avaliable[N];
+    for (int cr = 0; cr < N; ++cr)
+        avaliable[cr] = false;
+
+    for (int u = 1; u < N; ++u)
+    {
+        for (listnode *itr = adjList[u]; itr != nullptr; itr = itr->next)
+            if(colors[itr->label] != -1)
+                avaliable[colors[itr->label]] = false;
+    }
+
+    for (int u = 0; u < N; ++u)
+        cout << "Vertice: " << u << "---> Cor " << colors[u] << endl;
 
 }
+
+
+/*void Graph::colourVertix(int vertix, int colour[])
+{
+    for (int i = 0; i < N; i++)
+    {
+        if (adjList[i] != nullptr)
+        {
+            cout<<i<<": ";
+            for (listnode* itr = adjList[i]; itr != nullptr; itr = itr->next)
+            {
+                cout<<itr->label<<" ";
+            }
+            cout<<endl;
+        }
+    }
+}*/
+

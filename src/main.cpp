@@ -32,7 +32,14 @@ int main(int argc,char *argv[])
         ++counter;
     }
 
-    g.showGraph();
+    int arrayColors[vertixInt];
+
+    for(int i = 0; i < vertixInt; ++i)
+    {
+        cin >> arrayColors[i];
+    }
+
+    g.greedyColoring(arrayColors);
 
     return 0;
 }

@@ -21,7 +21,7 @@ public:
     Graph(int numV);
     void addEdge(int from, int to);
     void showGraph();
-    void colourVertix(int vertix, int colour);
+    void greedyColoring(int colors[]);
 };
 
 #endif //ED_TP2_GRAPH_H
