@@ -1,4 +1,4 @@
-#include "Sorting.h"
+#include "sorting.h"
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -101,7 +101,7 @@ void Sorting::quickSort(int arr[], int low, int high)
 
 
 void Sorting::merge(int array[], int const left, int const mid,
-           int const right)
+                    int const right)
 {
     int const subArrayOne = mid - left + 1;
     int const subArrayTwo = right - mid;

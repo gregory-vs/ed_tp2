@@ -7,7 +7,7 @@ include_directories(include)
 
 add_executable(ed_tp2
         src/main.cpp
-        include/Sorting.h
-        src/Sorting.cpp
+        include/sorting.h
+        src/sorting.cpp
         include/graph.h
         src/graph.cpp)

@@ -21,7 +21,7 @@ public:
     Graph(int numV);
     void addEdge(int from, int to);
     void showGraph();
-    int isGreedy(int colors[], int nVertix, int nEdges);
+    static int isGreedy(int colors[], int nVertix, int nEdges);
     static bool isCompleteGraph(int nVertix, int nEdges);
     int countEdges() const;
 };
