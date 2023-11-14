@@ -31,38 +31,59 @@ void Graph::showGraph()
     }
 }
 
-void Graph::greedyColoring(int colors[])
+int Graph::countEdges() const
 {
-    bool avaliable[N];
-    for (int cr = 0; cr < N; ++cr)
-        avaliable[cr] = false;
+    int sum = 0;
+    int countNeighbors;
 
-    for (int u = 1; u < N; ++u)
-    {
-        for (listnode *itr = adjList[u]; itr != nullptr; itr = itr->next)
-            if(colors[itr->label] != -1)
-                avaliable[colors[itr->label]] = false;
+    for(int i = 0; i < N; ++i) {
+        countNeighbors = 0;
+        for (listnode *itr = adjList[i]; itr != nullptr; itr = itr->next)
+            ++countNeighbors;
+
+        sum += countNeighbors;
     }
-
-    for (int u = 0; u < N; ++u)
-        cout << "Vertice: " << u << "---> Cor " << colors[u] << endl;
-
+    return sum/2;
 }
 
-
-/*void Graph::colourVertix(int vertix, int colour[])
+int Graph::isGreedy(int colors[], int nVertix, int nEdges)
 {
-    for (int i = 0; i < N; i++)
+    int isGreedy = 0;
+
+    if(isCompleteGraph(nVertix, nEdges))
+        return 1;
+
+    for(int i = 0; i < N; ++i)
     {
-        if (adjList[i] != nullptr)
+        if(adjList[i] != nullptr)
         {
-            cout<<i<<": ";
             for (listnode* itr = adjList[i]; itr != nullptr; itr = itr->next)
             {
-                cout<<itr->label<<" ";
+                if(colors[i] == colors[adjList[i]->label])
+                {
+                    return 0;
+                }
+                if(colors[i] > 1 && adjList[i]->next != nullptr && adjList[i]->next->next == nullptr)
+                {
+                    isGreedy = 1;
+                }
+                if(colors[i] > 1 && adjList[i]->next != nullptr && colors[adjList[i]->next->label] != 1)
+                {
+                    isGreedy = 0;
+                }
             }
-            cout<<endl;
         }
     }
-}*/
+}
+
+bool Graph::isCompleteGraph(int nVertix, int nEdges)
+{
+    int formuleGraphs = (nVertix*(nVertix-1))/2;
+
+    if(formuleGraphs == nEdges)
+        return true;
+
+    return false;
+}
+
 

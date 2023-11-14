@@ -32,6 +32,8 @@ int main(int argc,char *argv[])
         ++counter;
     }
 
+    int edges = g.countEdges();
+
     int arrayColors[vertixInt];
 
     for(int i = 0; i < vertixInt; ++i)
@@ -39,7 +41,6 @@ int main(int argc,char *argv[])
         cin >> arrayColors[i];
     }
 
-    g.greedyColoring(arrayColors);
 
     return 0;
 }

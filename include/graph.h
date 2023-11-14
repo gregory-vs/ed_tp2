@@ -21,7 +21,9 @@ public:
     Graph(int numV);
     void addEdge(int from, int to);
     void showGraph();
-    void greedyColoring(int colors[]);
+    int isGreedy(int colors[], int nVertix, int nEdges);
+    static bool isCompleteGraph(int nVertix, int nEdges);
+    int countEdges() const;
 };
 
 #endif //ED_TP2_GRAPH_H
