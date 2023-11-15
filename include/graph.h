@@ -21,9 +21,12 @@ public:
     Graph(int numV);
     void addEdge(int from, int to);
     void showGraph();
-    static int isGreedy(int colors[], int nVertix, int nEdges);
+    int isGreedy(int colors[], int nVertix, int nEdges);
     static bool isCompleteGraph(int nVertix, int nEdges);
     int countEdges() const;
+
+private:
+    static int getColorPosition(int colors[], int posVertix);
 };
 
 #endif //ED_TP2_GRAPH_H

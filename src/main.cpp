@@ -45,7 +45,7 @@ int main(int argc,char *argv[])
         cin >> arrayColors[i];
     }
 
-    isGreedy = Graph::isGreedy(arrayColors, vertixInt, edges);
+    isGreedy = g.isGreedy(arrayColors, vertixInt, edges);
 
     for(int i = 0; i  < vertixInt; ++i)
     {
