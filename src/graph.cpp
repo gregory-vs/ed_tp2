@@ -57,29 +57,43 @@ int Graph::isGreedy(int colors[], int nVertix, int nEdges)
     for(int i = 0; i < N; ++i)
     {
         listnode* temp = adjList[i];
-        int *neighbors = (int *)malloc(sizeof(int));
-
-        int count = 0;
+        listnode* temp2 = adjList[i];
+        int numNeighbors = 0;
         while(temp != nullptr)
         {
-            neighbors[count] = temp->label;
-            ++count;
+            ++numNeighbors;
             temp = temp->next;
         }
 
-        size_t sizeNeighborsByte = sizeof(neighbors);
-        size_t sizeNeighbors = sizeNeighborsByte/sizeof(int);
-
-        for(int j = 0; j < sizeColors; ++j)
+        int neighbors[numNeighbors];
+        int count = 0;
+        while(temp2 != nullptr)
         {
-            for(int k = 0; k < sizeNeighbors; ++k)
-            {
-                if(colors[j] == colors[neighbors[k]] && j != neighbors[k])
-                    return 0;
-            }
-
+            neighbors[count] = temp2->label;
+            ++count;
+            temp2 = temp2->next;
         }
-        free(neighbors);
+
+        for(int k = 0; k < numNeighbors; ++k)
+        {
+            if(colors[i] == colors[neighbors[k]] && i != neighbors[k])
+                return 0;
+        }
+
+        int colorsNeighbors[numNeighbors];
+        for(int k = 0; k < numNeighbors; ++k)
+            colorsNeighbors[k] = colors[neighbors[k]];
+
+        for(int k = 0; k < numNeighbors; ++k)
+        {
+            int actualColor = colorsNeighbors[k];
+            if(colors[i] == actualColor)
+                return 0;
+
+//            if(colors[i] != 1)
+//                if(colors[i] < actualColor)
+//                    return 0;
+        }
     }
 
     return 1;
@@ -98,4 +112,9 @@ bool Graph::isCompleteGraph(int nVertix, int nEdges)
 int Graph::getColorPosition(int colors[], int posVertix)
 {
     return colors[posVertix];
+}
+
+int Graph::canBeLesser(int actualVertixColor, int colorsNeighbors[])
+{
+
 }
