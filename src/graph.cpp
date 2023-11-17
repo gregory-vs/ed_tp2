@@ -48,9 +48,6 @@ int Graph::countEdges() const
 
 int Graph::isGreedy(int colors[], int nVertix, int nEdges)
 {
-    size_t sizeColorsByte = sizeof(colors);
-    size_t sizeColors = sizeColorsByte / sizeof(int);
-
     if(isCompleteGraph(nVertix, nEdges))
         return 1;
 
@@ -59,6 +56,7 @@ int Graph::isGreedy(int colors[], int nVertix, int nEdges)
         listnode* temp = adjList[i];
         listnode* temp2 = adjList[i];
         int numNeighbors = 0;
+        int maxColorNeighbor = colors[i]-1;
         while(temp != nullptr)
         {
             ++numNeighbors;
@@ -90,9 +88,11 @@ int Graph::isGreedy(int colors[], int nVertix, int nEdges)
             if(colors[i] == actualColor)
                 return 0;
 
-//            if(colors[i] != 1)
-//                if(colors[i] < actualColor)
-//                    return 0;
+            if(actualColor != 1 && actualColor != 2 && maxColorNeighbor > 1 && actualColor > maxColorNeighbor)
+                return 0;
+
+            if(numNeighbors == 1 && actualColor == 1 && colors[i] != 2)
+                return 0;
         }
     }
 
@@ -109,12 +109,3 @@ bool Graph::isCompleteGraph(int nVertix, int nEdges)
     return false;
 }
 
-int Graph::getColorPosition(int colors[], int posVertix)
-{
-    return colors[posVertix];
-}
-
-int Graph::canBeLesser(int actualVertixColor, int colorsNeighbors[])
-{
-
-}
